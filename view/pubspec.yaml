@@ -1,0 +1,22 @@
+name: view
+description: "View package"
+version: 0.0.1+1
+publish_to: 'none'
+
+environment:
+  sdk: ^3.10.4
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  material_table_view: ^5.5.2
+
+  view_model:
+    path: ../view_model
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
