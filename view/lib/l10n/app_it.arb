@@ -1,0 +1,22 @@
+{
+  "appName": "Gestionale Libri",
+  "logout": "Esci",
+  "cityPageTitle": "Città",
+  "email": "Email",
+  "password": "Password",
+  "login": "Accedi",
+  "loginError": "{name, select, connectionError{Errore di connessione} wrongCredentials{Le credenziali inserite non sono valide} genericServerError{Si è verificato un errore, riprova più tardi} other{}}",
+  "usersPageTitle": "Utenti",
+  "usersPageSubtitle": "Lista degli utenti che possono accedere all'app",
+  "userNotFound": "Utente [{id}] non trovato",
+  "pageNotFound": "Pagina non trovata",
+  "userRole": "Ruolo: {role}",
+  "userId": "Id: {id}",
+  "backMessage": "Indietro",
+  "clientsPageTitle": "Clienti",
+  "clientsPageSubtitle": "Lista dei clienti censiti sul CMS",
+  "clientId": "Id cliente",
+  "clientName": "Nome cliente",
+  "dashboardPageTitle": "Dashboard",
+  "dashboardPageSubtitle": "Statistiche vendita libri"
+}

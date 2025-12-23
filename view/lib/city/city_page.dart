@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:view/city/strings/city_page_strings.dart';
+import 'package:view/injectable.dart';
 import 'package:view/widget/custom_table_view.dart';
 
-class CityPage extends StatefulWidget {
-  const CityPage({super.key});
+class CityPage extends InjectableStateful {
+  const CityPage(super.inject, {super.key});
 
   @override
   State<CityPage> createState() => _CityPageState();
 }
 
 class _CityPageState extends State<CityPage> {
+  CityPageStrings get strings => widget.inject();
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Città"),
+        Text(strings.pageTitle),
         Expanded(
           child: CustomTableView(
             columns: [
