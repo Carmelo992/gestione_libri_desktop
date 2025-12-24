@@ -37,16 +37,18 @@ class _TableView extends InjectableStateless {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: vm.clients,
-      builder: (context, clients, child) {
-        if (clients.isEmpty) return Center(child: CircularProgressIndicator());
-        return CustomTableView(
-          columns: [],
-          cellBuilder: (column, itemIndex) => Container(),
-          itemLength: clients.length,
-        );
-      },
+    return Card(
+      child: ValueListenableBuilder(
+        valueListenable: vm.clients,
+        builder: (context, clients, child) {
+          if (clients.isEmpty) return Center(child: CircularProgressIndicator());
+          return CustomTableView(
+            columns: [],
+            cellBuilder: (column, itemIndex) => Container(),
+            itemLength: clients.length,
+          );
+        },
+      ),
     );
   }
 }

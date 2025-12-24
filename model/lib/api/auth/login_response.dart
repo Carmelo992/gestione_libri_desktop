@@ -14,7 +14,7 @@ class LoginResponse {
   @Field("email")
   final String email;
   @Field("isAdmin")
-  final int isAdmin;
+  final bool isAdmin;
   @Field("createdAt")
   final DateTime createdAt;
   @Field("updatedAt")

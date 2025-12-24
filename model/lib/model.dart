@@ -2,8 +2,12 @@ import 'dart:async';
 
 import 'package:model/auth/auth_service.dart';
 import 'package:model/auth/auth_service_impl.dart';
+import 'package:model/clients/client_service.dart';
+import 'package:model/clients/client_service_impl.dart';
 import 'package:model/session/session_service.dart';
 import 'package:model/session/session_service_impl.dart';
+import 'package:model/users/user_service.dart';
+import 'package:model/users/user_service_impl.dart';
 
 export 'package:model/auth/auth_service.dart';
 export 'package:model/clients/client_model.dart';
@@ -25,5 +29,7 @@ class Model {
   }) {
     registerLazySingleton<SessionService>(() => SessionServiceImpl());
     registerLazySingleton<AuthService>(() => AuthServiceImpl(inject));
+    registerLazySingleton<UserService>(() => UserServiceImpl(inject));
+    registerLazySingleton<ClientService>(() => ClientServiceImpl(inject));
   }
 }

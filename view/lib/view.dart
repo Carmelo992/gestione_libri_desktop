@@ -4,6 +4,8 @@ import 'package:view/city/strings/city_page_strings.dart';
 import 'package:view/city/strings/city_page_strings_impl.dart';
 import 'package:view/features/clients/clients_list/clients_list_strings.dart';
 import 'package:view/features/clients/clients_list/clients_list_strings_impl.dart';
+import 'package:view/features/dashboard/dashboard_strings.dart';
+import 'package:view/features/dashboard/dashboard_strings_impl.dart';
 import 'package:view/features/users/user_details/user_details_strings.dart';
 import 'package:view/features/users/user_details/user_details_strings_impl.dart';
 import 'package:view/features/users/users_list/users_list_strings.dart';
@@ -30,8 +32,9 @@ class View {
     registerSingletonIfAbsent,
     required T Function<T extends Object>({String? instanceName}) inject,
   }) {
-    registerSingletonIfAbsent<CityPageStrings>(() => CityPageStringsImpl(inject));
     registerSingletonIfAbsent<LoginStrings>(() => LoginStringsImpl(inject));
+    registerSingletonIfAbsent<DashboardStrings>(() => DashboardStringsImpl(inject));
+    registerSingletonIfAbsent<CityPageStrings>(() => CityPageStringsImpl(inject));
     registerSingletonIfAbsent<UserDetailsStrings>(() => UserDetailsStringsImpl(inject));
     registerSingletonIfAbsent<UsersListStrings>(() => UsersListStringsImpl(inject));
     registerSingletonIfAbsent<ClientsListStrings>(() => ClientsListStringsImpl(inject));

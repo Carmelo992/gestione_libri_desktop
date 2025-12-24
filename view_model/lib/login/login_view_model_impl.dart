@@ -9,10 +9,10 @@ class LoginViewModelImpl implements LoginViewModel {
 
   LoginViewModelImpl(T Function<T extends Object>() inject) : service = inject();
   @override
-  TextEditingController emailController = TextEditingController();
+  TextEditingController emailController = TextEditingController(text: "admin@admin.it");
 
   @override
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController passwordController = TextEditingController(text: "B33@ppSrl!");
 
   @override
   ValueNotifier<bool> isLoading = ValueNotifier(false);
