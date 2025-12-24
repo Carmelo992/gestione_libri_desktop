@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:view/city/strings/city_page_strings.dart';
-import 'package:view/city/strings/city_page_strings_impl.dart';
 import 'package:view/features/clients/clients_list/clients_list_strings.dart';
 import 'package:view/features/clients/clients_list/clients_list_strings_impl.dart';
 import 'package:view/features/dashboard/dashboard_strings.dart';
@@ -15,7 +13,6 @@ import 'package:view/features/years/years_list/years_list_strings_impl.dart';
 import 'package:view/login/login_strings.dart';
 import 'package:view/login/login_strings_impl.dart';
 
-export 'package:view/city/city_page.dart';
 export 'package:view/features/clients/clients_list/clients_page.dart';
 export 'package:view/features/dashboard/dashboard_page.dart';
 export 'package:view/features/users/user_details/user_not_found_page.dart';
@@ -37,7 +34,6 @@ class View {
   }) {
     registerSingletonIfAbsent<LoginStrings>(() => LoginStringsImpl(inject));
     registerSingletonIfAbsent<DashboardStrings>(() => DashboardStringsImpl(inject));
-    registerSingletonIfAbsent<CityPageStrings>(() => CityPageStringsImpl(inject));
     registerSingletonIfAbsent<UserDetailsStrings>(() => UserDetailsStringsImpl(inject));
     registerSingletonIfAbsent<UsersListStrings>(() => UsersListStringsImpl(inject));
     registerSingletonIfAbsent<ClientsListStrings>(() => ClientsListStringsImpl(inject));

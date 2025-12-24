@@ -5,7 +5,6 @@ import 'package:gestione_libri_desktop/theme.dart';
 import 'package:get_it/get_it.dart';
 import 'package:model/model.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:view/city/city_page.dart';
 import 'package:view/generated/app_localizations.dart';
 import 'package:view/view.dart' as view;
 import 'package:view_model/view_model.dart';
@@ -82,24 +81,5 @@ class MyApp extends StatelessWidget {
     GetIt getIt = GetIt.instance;
     getIt.registerSingletonIfAbsent<AppLocalization>(() => AppLocalization.of(context));
     view.View.inject(registerSingletonIfAbsent: getIt.registerSingletonIfAbsent, inject: getIt.get);
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary, title: Text(widget.title)),
-      body: CityPage(GetIt.instance.get),
-    );
   }
 }
