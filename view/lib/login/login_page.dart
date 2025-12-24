@@ -28,12 +28,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
-  void dispose() {
-    vm.loginError.removeListener(loginErrorHandler);
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
