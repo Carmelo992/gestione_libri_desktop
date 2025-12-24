@@ -43,8 +43,15 @@ class _TableView extends InjectableStateless {
         builder: (context, clients, child) {
           if (clients.isEmpty) return Center(child: CircularProgressIndicator());
           return CustomTableView(
-            columns: [],
-            cellBuilder: (column, itemIndex) => Container(),
+            columns: [
+              CustomTableColumn(index: 0, label: strings.clientId, width: 200),
+              CustomTableColumn(index: 1, label: strings.clientName, width: 100, flex: 1),
+            ],
+            cellBuilder: (column, itemIndex) => switch(column){
+              0 => Text(clients[itemIndex].id.toString()),
+              1 => Text(clients[itemIndex].name),
+            _ => Container(),
+            },
             itemLength: clients.length,
           );
         },
