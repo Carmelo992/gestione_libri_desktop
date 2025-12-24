@@ -8,6 +8,8 @@ import 'package:model/session/session_service.dart';
 import 'package:model/session/session_service_impl.dart';
 import 'package:model/users/user_service.dart';
 import 'package:model/users/user_service_impl.dart';
+import 'package:model/years/year_service.dart';
+import 'package:model/years/year_service_impl.dart';
 
 export 'package:model/auth/auth_service.dart';
 export 'package:model/clients/client_model.dart';
@@ -15,6 +17,8 @@ export 'package:model/clients/client_service.dart';
 export 'package:model/session/session_service.dart';
 export 'package:model/users/user_model.dart';
 export 'package:model/users/user_service.dart';
+export 'package:model/years/year_model.dart';
+export 'package:model/years/year_service.dart';
 
 class Model {
   static void inject({
@@ -31,5 +35,6 @@ class Model {
     registerLazySingleton<AuthService>(() => AuthServiceImpl(inject));
     registerLazySingleton<UserService>(() => UserServiceImpl(inject));
     registerLazySingleton<ClientService>(() => ClientServiceImpl(inject));
+    registerLazySingleton<YearService>(() => YearServiceImpl(inject));
   }
 }

@@ -18,5 +18,8 @@
   "clientId": "Id cliente",
   "clientName": "Nome cliente",
   "dashboardPageTitle": "Dashboard",
-  "dashboardPageSubtitle": "Statistiche vendita libri"
+  "dashboardPageSubtitle": "Statistiche vendita libri",
+  "yearPageTitle": "Anni scolastici",
+  "yearPageSubtitle": "Lista anni scolastici",
+  "year": "Anno"
 }
