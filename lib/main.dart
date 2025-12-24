@@ -43,12 +43,8 @@ class MyApp extends StatelessWidget {
             _registerStringSingletons(context);
             return GetIt.instance.get<AppLocalization>().appName;
           },
-          theme: ThemeData.from(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.red, brightness: Brightness.light),
-          ),
-          darkTheme: ThemeData.from(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.red, brightness: Brightness.dark),
-          ),
+          theme: theme,
+          darkTheme: darkTheme,
           routerConfig: CustomRouter.initialize(
             routeListener: (route) => debugPrint("Route: $route"),
             inject: <T extends Object>({String? instanceName}) => GetIt.instance.get<T>(),
