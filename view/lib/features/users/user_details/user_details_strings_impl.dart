@@ -20,5 +20,5 @@ class UserDetailsStringsImpl extends Injectable implements UserDetailsStrings {
   String userRole(String role) => localization.userRole(role: role);
 
   @override
-  String userId(String userId) => localization.userId(id: userId);
+  String userId(String userId) => localization.id(id: userId);
 }

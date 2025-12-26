@@ -11,7 +11,7 @@
   "userNotFound": "Utente [{id}] non trovato",
   "pageNotFound": "Pagina non trovata",
   "userRole": "Ruolo: {role}",
-  "userId": "Id: {id}",
+  "id": "Id: {id}",
   "backMessage": "Indietro",
   "clientsPageTitle": "Clienti",
   "clientsPageSubtitle": "Lista dei clienti censiti sul CMS",
@@ -21,5 +21,6 @@
   "dashboardPageSubtitle": "Statistiche vendita libri",
   "yearPageTitle": "Anni scolastici",
   "yearPageSubtitle": "Lista anni scolastici",
-  "year": "Anno"
+  "year": "Anno",
+  "yearNotFound": "Anno [{id}] non trovato"
 }
