@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:view/generated/app_localizations.dart';
 import 'package:view/injectable.dart';
 import 'package:view/widget/navigation/navigation.dart';
 import 'package:view_model/view_model.dart';
@@ -129,7 +130,10 @@ class _ScaffoldWithDrawer extends InjectableStateless {
               decoration: const BoxDecoration(border: Border()),
               margin: EdgeInsets.zero,
               child: Center(
-                child: Text("Emile CMS", style: theme.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w600)),
+                child: Text(
+                  AppLocalization.of(context).appName,
+                  style: theme.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w600),
+                ),
               ),
             ),
             Expanded(child: _NavigationRail(navigationShell: navigationShell, expand: true)),

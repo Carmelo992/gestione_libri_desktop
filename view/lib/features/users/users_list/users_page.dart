@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:view/features/users/users_list/users_list_strings.dart';
 import 'package:view/injectable.dart';
 import 'package:view/widget/content_view.dart';
-import 'package:view/widget/page_header.dart';
+import 'package:view/widget/page_header/page_header.dart';
 import 'package:view_model/view_model.dart';
 
 class UsersPage extends InjectableStateless {
@@ -22,7 +22,7 @@ class UsersPage extends InjectableStateless {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          PageHeader(title: strings.title, description: strings.subtitle),
+          PageHeader(inject, title: strings.title, description: strings.subtitle),
           const Gap(16),
           Expanded(
             child: Card(

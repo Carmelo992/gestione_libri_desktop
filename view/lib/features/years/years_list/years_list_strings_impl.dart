@@ -15,4 +15,28 @@ class YearsListStringsImpl extends Injectable implements YearsListStrings {
 
   @override
   String get year => localization.year;
+
+  @override
+  String yearAlreadyAdded(String year) => localization.yearAlreadyAdded(year: year);
+
+  @override
+  String get error => localization.error;
+
+  @override
+  String get close => localization.close;
+
+  @override
+  String get cancel => localization.cancel;
+
+  @override
+  String get continueText => localization.continueText;
+
+  @override
+  String get newYear => localization.newYear;
+
+  @override
+  String createNewYear(String year) => localization.createNewYear(year: year);
+
+  @override
+  String newYearError(String year) => localization.newYearError(year: year);
 }

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:view/injectable.dart';
+import 'package:view/widget/page_header/page_header_strings.dart';
 
-class PageHeader extends StatelessWidget {
-  const PageHeader({super.key, required this.title, required this.description, this.onAdd});
+class PageHeader extends InjectableStateless {
+  const PageHeader(super.inject, {super.key, required this.title, required this.description, this.onAdd});
 
   final String title;
   final String description;
   final VoidCallback? onAdd;
+
+  PageHeaderStrings get strings => inject();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,7 @@ class PageHeader extends StatelessWidget {
             Expanded(
               child: Text(title, style: theme.textTheme.headlineMedium!.copyWith(fontWeight: FontWeight.w700)),
             ),
-            if (onAdd != null) OutlinedButton(onPressed: onAdd, child: Text("Aggiungi")),
+            if (onAdd != null) OutlinedButton(onPressed: onAdd, child: Text(strings.add)),
           ],
         ),
         Text(description),

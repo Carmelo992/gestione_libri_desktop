@@ -14,6 +14,10 @@ import 'package:view/features/years/years_list/years_list_strings.dart';
 import 'package:view/features/years/years_list/years_list_strings_impl.dart';
 import 'package:view/login/login_strings.dart';
 import 'package:view/login/login_strings_impl.dart';
+import 'package:view/widget/custom_table/custom_table_strings.dart';
+import 'package:view/widget/custom_table/custom_table_strings_impl.dart';
+import 'package:view/widget/page_header/page_header_strings.dart';
+import 'package:view/widget/page_header/page_header_strings_impl.dart';
 
 export 'package:view/features/clients/clients_list/clients_page.dart';
 export 'package:view/features/dashboard/dashboard_page.dart';
@@ -35,6 +39,8 @@ class View {
     required T Function<T extends Object>({String? instanceName}) inject,
   }) {
     registerSingletonIfAbsent<LoginStrings>(() => LoginStringsImpl(inject));
+    registerSingletonIfAbsent<PageHeaderStrings>(() => PageHeaderStringsImpl(inject));
+    registerSingletonIfAbsent<CustomTableStrings>(() => CustomTableStringsImpl(inject));
     registerSingletonIfAbsent<DashboardStrings>(() => DashboardStringsImpl(inject));
     registerSingletonIfAbsent<UserDetailsStrings>(() => UserDetailsStringsImpl(inject));
     registerSingletonIfAbsent<UsersListStrings>(() => UsersListStringsImpl(inject));

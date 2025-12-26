@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:material_table_view/material_table_view.dart';
+import 'package:view/injectable.dart';
+import 'package:view/widget/custom_table/custom_table_strings.dart';
 
-class CustomTableView extends StatefulWidget {
+class CustomTableView extends InjectableStateful {
   final int initialPage;
   final int itemsPerPage;
   final int itemLength;
@@ -15,7 +17,10 @@ class CustomTableView extends StatefulWidget {
   final ValueChanged<int>? onDelete;
   final ValueChanged<int>? showDetails;
 
-  CustomTableView({
+  CustomTableStrings get strings => inject();
+
+  CustomTableView(
+    super.inject, {
     required List<CustomTableColumn> columns,
     required this.cellBuilder,
     required this.itemLength,
@@ -45,137 +50,150 @@ class _CustomTableViewState extends State<CustomTableView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: ValueListenableBuilder(
-            valueListenable: widget.pageSize,
-            builder: (context, pageSize, child) {
-              return TableView.builder(
-                style: TableViewStyle(
-                  dividers: TableViewDividersStyle(
-                    vertical: TableViewVerticalDividersStyle.symmetric(TableViewVerticalDividerStyle(wiggleCount: 0)),
-                  ),
-                  scrollbars: const TableViewScrollbarsStyle.symmetric(
-                    TableViewScrollbarStyle(
-                      interactive: true,
-                      enabled: TableViewScrollbarEnabled.always,
-                      thumbVisibility: WidgetStatePropertyAll(true),
-                      trackVisibility: WidgetStatePropertyAll(true),
-                    ),
-                  ),
-                ),
-                columns: widget.columns,
-                rowCount: pageSize,
-                rowHeight: 40,
-                headerHeight: 30,
-                headerBuilder: (context, contentBuilder) => contentBuilder(context, (context, column) {
-                  return Center(child: Text(widget.columns.elementAt(column).label));
-                }),
-                rowBuilder: (context, row, contentBuilder) => contentBuilder(
-                  context,
-                  (context, column) => Align(
-                    alignment: Alignment.centerLeft,
-                    child: MouseRegion(
-                      onEnter: (event) {
-                        var itemIndex = ((widget.page.value - 1) * pageSize) + row;
-                        if (itemIndex >= widget.itemLength) return;
-                        onRowOver.value = row;
-                      },
-                      onExit: (event) {
-                        onRowOver.value = -1;
-                      },
-                      child: ValueListenableBuilder(
-                        valueListenable: onRowOver,
-                        builder: (context, value, child) {
-                          return Container(
-                            color: value == row ? Colors.grey.withValues(alpha: 0.2) : null,
-                            width: double.infinity,
-                            height: double.infinity,
-                            padding: .all(5),
+    return widget.itemLength == 0
+        ? Center(child: Text(widget.strings.noItemToShow))
+        : Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ValueListenableBuilder(
+                  valueListenable: widget.pageSize,
+                  builder: (context, pageSize, child) {
+                    return TableView.builder(
+                      style: TableViewStyle(
+                        dividers: TableViewDividersStyle(
+                          vertical: TableViewVerticalDividersStyle.symmetric(
+                            TableViewVerticalDividerStyle(wiggleCount: 0),
+                          ),
+                        ),
+                        scrollbars: const TableViewScrollbarsStyle.symmetric(
+                          TableViewScrollbarStyle(
+                            interactive: true,
+                            enabled: TableViewScrollbarEnabled.always,
+                            thumbVisibility: WidgetStatePropertyAll(true),
+                            trackVisibility: WidgetStatePropertyAll(true),
+                          ),
+                        ),
+                      ),
+                      columns: widget.columns,
+                      rowCount: pageSize,
+                      rowHeight: 40,
+                      headerHeight: 30,
+                      headerBuilder: (context, contentBuilder) => contentBuilder(context, (context, column) {
+                        return Center(child: Text(widget.columns.elementAt(column).label));
+                      }),
+                      rowBuilder: (context, row, contentBuilder) => contentBuilder(
+                        context,
+                        (context, column) => Align(
+                          alignment: Alignment.centerLeft,
+                          child: MouseRegion(
+                            onEnter: (event) {
+                              var itemIndex = ((widget.page.value - 1) * pageSize) + row;
+                              if (itemIndex >= widget.itemLength) return;
+                              onRowOver.value = row;
+                            },
+                            onExit: (event) {
+                              onRowOver.value = -1;
+                            },
                             child: ValueListenableBuilder(
-                              valueListenable: widget.page,
-                              builder: (context, page, child) {
-                                var columnItem = widget.columns.elementAt(column);
-                                var itemIndex = ((page - 1) * pageSize) + row;
-                                if (itemIndex >= widget.itemLength) return Container();
-                                if (column >= widget.columns.length) return Container();
-                                if (columnItem.index >= 0) {
-                                  return widget.cellBuilder(column, ((page - 1) * pageSize) + row);
-                                }
-                                return switch (columnItem.index) {
-                                  -2 => InkWell(
-                                    onTap: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) => AlertDialog.adaptive(
-                                          content: Text("Sei sicuro di voler cancellare l'elemento?"),
-                                          actions: [
-                                            TextButton(onPressed: Navigator.of(context).pop, child: Text("Annulla")),
-                                            TextButton(
-                                              onPressed: () => Navigator.of(context).pop(true),
-                                              child: Text("Continua"),
-                                            ),
-                                          ],
+                              valueListenable: onRowOver,
+                              builder: (context, value, child) {
+                                return Container(
+                                  color: value == row ? Colors.grey.withValues(alpha: 0.2) : null,
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  padding: .all(5),
+                                  child: ValueListenableBuilder(
+                                    valueListenable: widget.page,
+                                    builder: (context, page, child) {
+                                      var columnItem = widget.columns.elementAt(column);
+                                      var itemIndex = ((page - 1) * pageSize) + row;
+                                      if (itemIndex >= widget.itemLength) return Container();
+                                      if (column >= widget.columns.length) return Container();
+                                      if (columnItem.index >= 0) {
+                                        return widget.cellBuilder(column, ((page - 1) * pageSize) + row);
+                                      }
+                                      return switch (columnItem.index) {
+                                        -2 => InkWell(
+                                          onTap: () {
+                                            showDialog(
+                                              context: context,
+                                              builder: (context) => AlertDialog.adaptive(
+                                                content: Text(widget.strings.deleteItemMessage),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: Navigator.of(context).pop,
+                                                    child: Text(widget.strings.cancel),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () => Navigator.of(context).pop(true),
+                                                    child: Text(widget.strings.confirm),
+                                                  ),
+                                                ],
+                                              ),
+                                            ).then((value) {
+                                              if (value == true) {
+                                                widget.onDelete?.call(itemIndex);
+                                              }
+                                            });
+                                          },
+                                          child: Icon(Icons.delete_outline),
                                         ),
-                                      ).then((value) {
-                                        if (value == true) {
-                                          widget.onDelete?.call(itemIndex);
-                                        }
-                                      });
+                                        -3 => InkWell(
+                                          onTap: () => widget.showDetails?.call(itemIndex),
+                                          child: Icon(Icons.insert_drive_file_outlined),
+                                        ),
+                                        > 0 => widget.cellBuilder(column, ((page - 1) * pageSize) + row),
+                                        _ => Container(),
+                                      };
                                     },
-                                    child: Icon(Icons.delete_outline),
                                   ),
-                                  -3 => InkWell(
-                                    onTap: () => widget.showDetails?.call(itemIndex),
-                                    child: Icon(Icons.insert_drive_file_outlined),
-                                  ),
-                                  > 0 => widget.cellBuilder(column, ((page - 1) * pageSize) + row),
-                                  _ => Container(),
-                                };
+                                );
                               },
                             ),
-                          );
-                        },
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
-              );
-            },
-          ),
-        ),
-        Padding(
-          padding: const .symmetric(vertical: 8, horizontal: 16),
-          child: ValueListenableBuilder(
-            valueListenable: widget.page,
-            builder: (context, page, child) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(onTap: page == 1 ? null : () => changePage(1), child: Icon(Icons.keyboard_double_arrow_left)),
-                  InkWell(onTap: page == 1 ? null : () => changePage(page - 1), child: Icon(Icons.keyboard_arrow_left)),
-                  Text(page.toString()),
-                  InkWell(
-                    onTap: page == numberOfPages ? null : () => changePage(page + 1),
-                    child: Icon(Icons.keyboard_arrow_right),
-                  ),
-                  InkWell(
-                    onTap: page == numberOfPages ? null : () => changePage(numberOfPages),
-                    child: Icon(Icons.keyboard_double_arrow_right),
-                  ),
-                  Text(
-                    "${(page - 1) * widget.itemsPerPage + 1}...${min(widget.itemLength, (page * widget.itemsPerPage + 1))}"
-                        .toString(),
-                  ),
-                ],
-              );
-            },
-          ),
-        ),
-      ],
-    );
+              ),
+              Padding(
+                padding: const .symmetric(vertical: 8, horizontal: 16),
+                child: ValueListenableBuilder(
+                  valueListenable: widget.page,
+                  builder: (context, page, child) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: page == 1 ? null : () => changePage(1),
+                          child: Icon(Icons.keyboard_double_arrow_left),
+                        ),
+                        InkWell(
+                          onTap: page == 1 ? null : () => changePage(page - 1),
+                          child: Icon(Icons.keyboard_arrow_left),
+                        ),
+                        Text(page.toString()),
+                        InkWell(
+                          onTap: page == numberOfPages ? null : () => changePage(page + 1),
+                          child: Icon(Icons.keyboard_arrow_right),
+                        ),
+                        InkWell(
+                          onTap: page == numberOfPages ? null : () => changePage(numberOfPages),
+                          child: Icon(Icons.keyboard_double_arrow_right),
+                        ),
+                        Text(
+                          "${(page - 1) * widget.itemsPerPage + 1}...${min(widget.itemLength, (page * widget.itemsPerPage + 1))}"
+                              .toString(),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ],
+          );
   }
 
   void changePage(int page) {

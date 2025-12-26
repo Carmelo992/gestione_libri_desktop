@@ -22,5 +22,17 @@
   "yearPageTitle": "Anni scolastici",
   "yearPageSubtitle": "Lista anni scolastici",
   "year": "Anno",
-  "yearNotFound": "Anno [{id}] non trovato"
+  "yearNotFound": "Anno [{id}] non trovato",
+  "add": "Aggiungi",
+  "error": "Errore",
+  "deleteItemMessage": "Sei sicuro di voler cancellare l'elemento?",
+  "yearAlreadyAdded": "L'anno {year} esiste già",
+  "newYear": "Nuovo anno scolastico",
+  "createNewYear": "Crea nuovo anno scolastico {year}?",
+  "close": "Chiudi",
+  "continueText": "Continua",
+  "confirm": "Conferma",
+  "cancel": "Annulla",
+  "newYearError": "Sì è verificato un errore durante la creazione del nuovo anno {year}",
+  "noItemToShow": "Non ci sono elementi da visualizzare"
 }

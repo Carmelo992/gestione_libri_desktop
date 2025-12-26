@@ -4,7 +4,7 @@ import 'package:view/features/years/years_list/years_list_strings.dart';
 import 'package:view/injectable.dart';
 import 'package:view/widget/content_view.dart';
 import 'package:view/widget/custom_table_view.dart';
-import 'package:view/widget/page_header.dart';
+import 'package:view/widget/page_header/page_header.dart';
 import 'package:view_model/view_model.dart';
 
 class YearsPage extends InjectableStateless {
@@ -25,6 +25,7 @@ class YearsPage extends InjectableStateless {
             valueListenable: vm.items,
             builder: (context, years, child) {
               return PageHeader(
+                inject,
                 title: strings.title,
                 description: strings.subtitle,
                 onAdd: years == null
@@ -36,9 +37,9 @@ class YearsPage extends InjectableStateless {
                           showDialog(
                             context: context,
                             builder: (context) => AlertDialog.adaptive(
-                              title: Text("Errore"),
-                              content: Text("L'anno $newYear esiste già"),
-                              actions: [TextButton(onPressed: Navigator.of(context).pop, child: Text("Chiudi"))],
+                              title: Text(strings.error),
+                              content: Text(strings.newYearError(newYear)),
+                              actions: [TextButton(onPressed: Navigator.of(context).pop, child: Text(strings.close))],
                             ),
                           );
                           return;
@@ -47,11 +48,11 @@ class YearsPage extends InjectableStateless {
                           context: context,
                           builder: (context) {
                             return AlertDialog.adaptive(
-                              title: Text("Nuovo anno scolastico"),
-                              content: Text("Creare anno scolastico ${now.year}-${now.year + 1}?"),
+                              title: Text(strings.newYear),
+                              content: Text(strings.createNewYear(newYear)),
                               actions: [
-                                TextButton(onPressed: Navigator.of(context).pop, child: Text("Annulla")),
-                                TextButton(onPressed: () => Navigator.of(context).pop(true), child: Text("Continua")),
+                                TextButton(onPressed: Navigator.of(context).pop, child: Text(strings.cancel)),
+                                TextButton(onPressed: () => Navigator.of(context).pop(true), child: Text(strings.continueText)),
                               ],
                             );
                           },
@@ -63,11 +64,9 @@ class YearsPage extends InjectableStateless {
                                 showDialog(
                                   context: context,
                                   builder: (context) => AlertDialog.adaptive(
-                                    title: Text("Errore"),
-                                    content: Text(
-                                      "Sì è verificato un errore durante la creazione del nuovo anno '$newYear'",
-                                    ),
-                                    actions: [TextButton(onPressed: Navigator.of(context).pop, child: Text("Chiudi"))],
+                                    title: Text(strings.error),
+                                    content: Text(strings.yearAlreadyAdded(newYear)),
+                                    actions: [TextButton(onPressed: Navigator.of(context).pop, child: Text(strings.close))],
                                   ),
                                 );
                                 return;
@@ -105,8 +104,8 @@ class _TableView extends InjectableStateless {
         valueListenable: vm.items,
         builder: (context, years, child) {
           if (years == null) return Center(child: CircularProgressIndicator());
-          if (years.isEmpty) return Center(child: Text("Non ci sono elementi da visualizzare"));
           return CustomTableView(
+            inject,
             columns: [CustomTableColumn(index: 0, label: strings.year, width: 100)],
             cellBuilder: (column, itemIndex) => Text(years.elementAt(itemIndex).name),
             itemLength: years.length,
