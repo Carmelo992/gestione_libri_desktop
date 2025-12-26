@@ -12,6 +12,10 @@ import 'package:view_model/users/user_details_view_model.dart';
 import 'package:view_model/users/user_details_view_model_impl.dart';
 import 'package:view_model/users/users_view_model.dart';
 import 'package:view_model/users/users_view_model_impl.dart';
+import 'package:view_model/web_sites/web_site_details_view_model.dart';
+import 'package:view_model/web_sites/web_site_details_view_model_impl.dart';
+import 'package:view_model/web_sites/web_sites_view_model.dart';
+import 'package:view_model/web_sites/web_sites_view_model_impl.dart';
 import 'package:view_model/years/year_details_view_model.dart';
 import 'package:view_model/years/year_details_view_model_impl.dart';
 import 'package:view_model/years/years_view_model.dart';
@@ -23,6 +27,8 @@ export 'package:view_model/login/login_view_model.dart';
 export 'package:view_model/session/session_view_model.dart';
 export 'package:view_model/users/user_details_view_model.dart';
 export 'package:view_model/users/users_view_model.dart';
+export 'package:view_model/web_sites/web_site_details_view_model.dart';
+export 'package:view_model/web_sites/web_sites_view_model.dart';
 export 'package:view_model/years/years_view_model.dart';
 
 class ViewModel {
@@ -56,6 +62,8 @@ class ViewModel {
       registerLazySingleton<UserDetailsViewModel>(() => UserDetailsViewModelImpl(inject));
       registerLazySingleton<YearsViewModel>(() => YearsViewModelImpl(inject: inject));
       registerLazySingleton<YearDetailsViewModel>(() => YearDetailsViewModelImpl(inject: inject));
+      registerLazySingleton<WebSitesViewModel>(() => WebSitesViewModelImpl(inject: inject));
+      registerLazySingleton<WebSiteDetailsViewModel>(() => WebSiteDetailsViewModelImpl(inject: inject));
     }
     if (scope.startsWith("noSession")) {
       registerLazySingleton<LoginViewModel>(() => LoginViewModelImpl(inject));

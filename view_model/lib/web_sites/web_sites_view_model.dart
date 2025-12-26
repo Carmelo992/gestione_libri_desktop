@@ -1,0 +1,8 @@
+import 'package:view_model/base/base_list_view_model.dart';
+import 'package:view_model/web_sites/web_site_ui_model.dart';
+
+abstract interface class WebSitesViewModel implements BaseListViewModel<WebSiteUIModel> {
+  Future<String?> createNewWebSite(String newWebSiteName, String newWebSiteUrl);
+
+  void deleteWebSite(String id);
+}

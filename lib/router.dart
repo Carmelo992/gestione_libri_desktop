@@ -12,6 +12,7 @@ part 'routes/dashboard_routes.dart';
 part 'routes/main_route.dart';
 part 'routes/user_routes.dart';
 part 'routes/year_routes.dart';
+part 'routes/web_site_routes.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 

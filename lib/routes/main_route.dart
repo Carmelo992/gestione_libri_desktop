@@ -20,6 +20,14 @@ part of '../router.dart';
         ),
       ],
     ),
+    TypedStatefulShellBranch(
+      routes: [
+        TypedGoRoute<WebSitesPageRoute>(
+          path: '/webSite',
+          routes: [TypedGoRoute<WebSitePageRoute>(path: ':webSiteId')],
+        ),
+      ],
+    ),
   ],
 )
 class ShellRouteData extends StatefulShellRouteData {

@@ -8,6 +8,8 @@ import 'package:model/session/session_service.dart';
 import 'package:model/session/session_service_impl.dart';
 import 'package:model/users/user_service.dart';
 import 'package:model/users/user_service_impl.dart';
+import 'package:model/web_sites/web_site_service.dart';
+import 'package:model/web_sites/web_site_service_impl.dart';
 import 'package:model/years/year_service.dart';
 import 'package:model/years/year_service_impl.dart';
 
@@ -17,6 +19,8 @@ export 'package:model/clients/client_service.dart';
 export 'package:model/session/session_service.dart';
 export 'package:model/users/user_model.dart';
 export 'package:model/users/user_service.dart';
+export 'package:model/web_sites/web_site_model.dart';
+export 'package:model/web_sites/web_site_service.dart';
 export 'package:model/years/year_model.dart';
 export 'package:model/years/year_service.dart';
 
@@ -36,5 +40,6 @@ class Model {
     registerLazySingleton<UserService>(() => UserServiceImpl(inject));
     registerLazySingleton<ClientService>(() => ClientServiceImpl(inject));
     registerLazySingleton<YearService>(() => YearServiceImpl(inject));
+    registerLazySingleton<WebSiteService>(() => WebSiteServiceImpl(inject));
   }
 }
