@@ -8,6 +8,8 @@ import 'package:view/features/users/user_details/user_details_strings.dart';
 import 'package:view/features/users/user_details/user_details_strings_impl.dart';
 import 'package:view/features/users/users_list/users_list_strings.dart';
 import 'package:view/features/users/users_list/users_list_strings_impl.dart';
+import 'package:view/features/years/year_details/year_details_strings.dart';
+import 'package:view/features/years/year_details/year_details_strings_impl.dart';
 import 'package:view/features/years/years_list/years_list_strings.dart';
 import 'package:view/features/years/years_list/years_list_strings_impl.dart';
 import 'package:view/login/login_strings.dart';
@@ -15,9 +17,9 @@ import 'package:view/login/login_strings_impl.dart';
 
 export 'package:view/features/clients/clients_list/clients_page.dart';
 export 'package:view/features/dashboard/dashboard_page.dart';
-export 'package:view/features/users/user_details/user_not_found_page.dart';
 export 'package:view/features/users/user_details/user_page.dart';
 export 'package:view/features/users/users_list/users_page.dart';
+export 'package:view/features/years/year_details/year_page.dart';
 export 'package:view/features/years/years_list/years_page.dart';
 export 'package:view/login/login_page.dart';
 export 'package:view/widget/navigation/navigation.dart';
@@ -38,5 +40,6 @@ class View {
     registerSingletonIfAbsent<UsersListStrings>(() => UsersListStringsImpl(inject));
     registerSingletonIfAbsent<ClientsListStrings>(() => ClientsListStringsImpl(inject));
     registerSingletonIfAbsent<YearsListStrings>(() => YearsListStringsImpl(inject));
+    registerSingletonIfAbsent<YearDetailsStrings>(() => YearDetailsStringsImpl(inject));
   }
 }

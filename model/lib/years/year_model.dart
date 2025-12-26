@@ -1,6 +1,8 @@
+import 'package:model/years/api/auth/year_response.dart';
+
 class YearModel {
   final String id;
   final String name;
 
-  const YearModel({required this.id, required this.name});
+  YearModel.fromApi(YearResponse model) : id = model.id.toString(), name = model.name;
 }

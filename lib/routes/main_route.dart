@@ -12,7 +12,14 @@ part of '../router.dart';
       ],
     ),
     TypedStatefulShellBranch(routes: [TypedGoRoute<ClientsPageRoute>(path: '/clients')]),
-    TypedStatefulShellBranch(routes: [TypedGoRoute<YearsPageRoute>(path: '/years')]),
+    TypedStatefulShellBranch(
+      routes: [
+        TypedGoRoute<YearsPageRoute>(
+          path: '/years',
+          routes: [TypedGoRoute<YearPageRoute>(path: ':yearId')],
+        ),
+      ],
+    ),
   ],
 )
 class ShellRouteData extends StatefulShellRouteData {

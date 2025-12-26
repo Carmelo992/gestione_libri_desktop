@@ -12,6 +12,8 @@ import 'package:view_model/users/user_details_view_model.dart';
 import 'package:view_model/users/user_details_view_model_impl.dart';
 import 'package:view_model/users/users_view_model.dart';
 import 'package:view_model/users/users_view_model_impl.dart';
+import 'package:view_model/years/year_details_view_model.dart';
+import 'package:view_model/years/year_details_view_model_impl.dart';
 import 'package:view_model/years/years_view_model.dart';
 import 'package:view_model/years/years_view_model_impl.dart';
 
@@ -52,7 +54,8 @@ class ViewModel {
       registerLazySingleton<ClientsViewModel>(() => ClientsViewModelImpl(inject));
       registerLazySingleton<UsersViewModel>(() => UsersViewModelImpl(inject));
       registerLazySingleton<UserDetailsViewModel>(() => UserDetailsViewModelImpl(inject));
-      registerLazySingleton<YearsViewModel>(() => YearsViewModelImpl(inject));
+      registerLazySingleton<YearsViewModel>(() => YearsViewModelImpl(inject: inject));
+      registerLazySingleton<YearDetailsViewModel>(() => YearDetailsViewModelImpl(inject: inject));
     }
     if (scope.startsWith("noSession")) {
       registerLazySingleton<LoginViewModel>(() => LoginViewModelImpl(inject));

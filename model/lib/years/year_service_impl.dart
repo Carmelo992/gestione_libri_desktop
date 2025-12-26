@@ -34,4 +34,19 @@ class YearServiceImpl extends Injectable implements YearService {
     var year = await client.details(token, yearId);
     return YearModel.fromApi(year);
   }
+
+  @override
+  Future<String?> createYear(String newYearName) async {
+    var token = sessionService.bearerToken();
+    if (token == null) return null;
+    var year = await client.insert(token, {"name": newYearName});
+    return YearModel.fromApi(year).id;
+  }
+
+  @override
+  Future<void> deleteYear(String id) async {
+    var token = sessionService.bearerToken();
+    if (token == null) return;
+    await client.delete(token, id);
+  }
 }

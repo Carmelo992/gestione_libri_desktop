@@ -12,6 +12,8 @@ class CustomTableView extends StatefulWidget {
   final List<CustomTableColumn> columns;
   final Widget Function(int column, int itemIndex) cellBuilder;
   final ValueChanged<int>? pageChanged;
+  final ValueChanged<int>? onDelete;
+  final ValueChanged<int>? showDetails;
 
   CustomTableView({
     required List<CustomTableColumn> columns,
@@ -20,14 +22,16 @@ class CustomTableView extends StatefulWidget {
     this.initialPage = 1,
     this.itemsPerPage = 10,
     this.pageChanged,
+    this.onDelete,
+    this.showDetails,
     super.key,
   }) : page = ValueNotifier(initialPage),
        pageSize = ValueNotifier(itemsPerPage),
        columns = [
          ...columns,
          if (!columns.any((column) => column.flex > 0)) CustomTableColumn(index: -1, width: 100, flex: 1, label: ""),
-         CustomTableColumn(index: -2, width: 40, label: ""),
-         CustomTableColumn(index: -3, width: 40, label: ""),
+         if (onDelete != null) CustomTableColumn(index: -2, width: 40, label: ""),
+         if (showDetails != null) CustomTableColumn(index: -3, width: 40, label: ""),
        ];
 
   @override
@@ -101,8 +105,32 @@ class _CustomTableViewState extends State<CustomTableView> {
                                   return widget.cellBuilder(column, ((page - 1) * pageSize) + row);
                                 }
                                 return switch (columnItem.index) {
-                                  -2 => InkWell(onTap: () {}, child: Icon(Icons.delete_outline)),
-                                  -3 => InkWell(onTap: () {}, child: Icon(Icons.edit_outlined)),
+                                  -2 => InkWell(
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog.adaptive(
+                                          content: Text("Sei sicuro di voler cancellare l'elemento?"),
+                                          actions: [
+                                            TextButton(onPressed: Navigator.of(context).pop, child: Text("Annulla")),
+                                            TextButton(
+                                              onPressed: () => Navigator.of(context).pop(true),
+                                              child: Text("Continua"),
+                                            ),
+                                          ],
+                                        ),
+                                      ).then((value) {
+                                        if (value == true) {
+                                          widget.onDelete?.call(itemIndex);
+                                        }
+                                      });
+                                    },
+                                    child: Icon(Icons.delete_outline),
+                                  ),
+                                  -3 => InkWell(
+                                    onTap: () => widget.showDetails?.call(itemIndex),
+                                    child: Icon(Icons.insert_drive_file_outlined),
+                                  ),
                                   > 0 => widget.cellBuilder(column, ((page - 1) * pageSize) + row),
                                   _ => Container(),
                                 };
@@ -151,7 +179,7 @@ class _CustomTableViewState extends State<CustomTableView> {
   }
 
   void changePage(int page) {
-    this.widget.page.value = page;
+    widget.page.value = page;
     widget.pageChanged?.call(page);
   }
 }
