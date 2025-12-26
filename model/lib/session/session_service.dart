@@ -7,4 +7,6 @@ abstract interface class SessionService {
   void userLogged(SessionModel model);
 
   void userLoggedOut();
+
+  String? bearerToken();
 }

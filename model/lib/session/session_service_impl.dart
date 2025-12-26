@@ -15,4 +15,10 @@ class SessionServiceImpl implements SessionService {
   void userLoggedOut() {
     session.value = null;
   }
+
+  @override
+  String? bearerToken() {
+    if (session.value == null) return null;
+    return "Bearer ${session.value!.jwt}";
+  }
 }

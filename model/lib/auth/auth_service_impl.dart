@@ -49,10 +49,10 @@ class AuthServiceImpl extends Injectable implements AuthService {
 
   @override
   Future<ModelResponse> logout() async {
-    var jwt = sessionService.session.value?.jwt;
+    var jwt = sessionService.bearerToken();
     try {
       if (jwt != null) {
-        client.logout("Bearer $jwt");
+        client.logout(jwt);
       }
     } catch (e) {
       debugPrint(e.toString());
