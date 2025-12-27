@@ -156,6 +156,8 @@ class _NavigationRail extends StatelessWidget {
     final theme = Theme.of(context);
     return NavigationRail(
       extended: expand,
+      scrollable: true,
+      useIndicator: true,
       selectedIndex: navigationShell.currentIndex,
       unselectedLabelTextStyle: theme.textTheme.bodyMedium,
       selectedLabelTextStyle: theme.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold),
