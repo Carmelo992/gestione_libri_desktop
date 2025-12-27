@@ -11,9 +11,9 @@ class WebSiteDetailsViewModelImpl extends BaseDetailsViewModelImpl<WebSiteUIMode
   WebSiteDetailsViewModelImpl({required super.inject}) : service = inject();
 
   @override
-  Future<WebSiteUIModel?> loadItemDetails(String webSiteId) async {
+  Future<WebSiteUIModel?> loadItemDetails(String cityId) async {
     try {
-      var website = await service.loadWebsite(webSiteId);
+      var website = await service.loadWebsite(cityId);
       if (website == null) return null;
       return WebSiteUIModel.fromModel(website);
     } catch (e) {

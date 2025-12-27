@@ -9,9 +9,9 @@ class YearDetailsViewModelImpl extends BaseDetailsViewModelImpl<YearUIModel> imp
   YearDetailsViewModelImpl({required super.inject}) : service = inject();
 
   @override
-  Future<YearUIModel?> loadItemDetails(String yearId) async {
+  Future<YearUIModel?> loadItemDetails(String cityId) async {
     try {
-      var year = await service.loadYear(yearId);
+      var year = await service.loadYear(cityId);
       if (year == null) return null;
       return YearUIModel.fromModel(year);
     } catch (e) {

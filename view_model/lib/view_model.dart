@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:view_model/cities/cities_view_model.dart';
+import 'package:view_model/cities/cities_view_model_impl.dart';
+import 'package:view_model/cities/city_details_view_model.dart';
+import 'package:view_model/cities/city_details_view_model_impl.dart';
 import 'package:view_model/clients/clients_view_model.dart';
 import 'package:view_model/clients/clients_view_model_impl.dart';
 import 'package:view_model/dashboard/dashboard_view_model.dart';
@@ -21,6 +25,8 @@ import 'package:view_model/years/year_details_view_model_impl.dart';
 import 'package:view_model/years/years_view_model.dart';
 import 'package:view_model/years/years_view_model_impl.dart';
 
+export 'package:view_model/cities/cities_view_model.dart';
+export 'package:view_model/cities/city_details_view_model.dart';
 export 'package:view_model/clients/clients_view_model.dart';
 export 'package:view_model/dashboard/dashboard_view_model.dart';
 export 'package:view_model/login/login_view_model.dart';
@@ -64,6 +70,8 @@ class ViewModel {
       registerLazySingleton<YearDetailsViewModel>(() => YearDetailsViewModelImpl(inject: inject));
       registerLazySingleton<WebSitesViewModel>(() => WebSitesViewModelImpl(inject: inject));
       registerLazySingleton<WebSiteDetailsViewModel>(() => WebSiteDetailsViewModelImpl(inject: inject));
+      registerLazySingleton<CitiesViewModel>(() => CitiesViewModelImpl(inject: inject));
+      registerLazySingleton<CityDetailsViewModel>(() => CityDetailsViewModelImpl(inject: inject));
     }
     if (scope.startsWith("noSession")) {
       registerLazySingleton<LoginViewModel>(() => LoginViewModelImpl(inject));

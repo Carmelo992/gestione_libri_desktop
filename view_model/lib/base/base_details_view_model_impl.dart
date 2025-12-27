@@ -16,7 +16,7 @@ abstract class BaseDetailsViewModelImpl<UI_MODEL> extends BaseViewModelImpl impl
     isLoading.value = false;
   }
 
-  Future<UI_MODEL?> loadItemDetails(String id);
+  Future<UI_MODEL?> loadItemDetails(String cityId);
 
   @override
   ValueNotifier<UI_MODEL?> details = ValueNotifier(null);
