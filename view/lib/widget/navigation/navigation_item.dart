@@ -6,7 +6,8 @@ enum NavigationItem {
   users(iconData: Icons.list_outlined),
   clients(iconData: Icons.supervisor_account_sharp),
   years(iconData: Icons.calendar_month_outlined),
-  websites(iconData: Icons.language);
+  websites(iconData: Icons.language),
+  cities(iconData: Icons.location_city);
 
   const NavigationItem({required this.iconData});
 

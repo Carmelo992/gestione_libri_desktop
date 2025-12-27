@@ -28,7 +28,7 @@ import 'package:view/widget/page_header/page_header_strings.dart';
 import 'package:view/widget/page_header/page_header_strings_impl.dart';
 
 export 'package:view/features/cities/city_details/city_page.dart';
-export 'package:view/features/cities/city_list/city_list_strings.dart';
+export 'package:view/features/cities/city_list/cities_page.dart';
 export 'package:view/features/clients/clients_list/clients_page.dart';
 export 'package:view/features/dashboard/dashboard_page.dart';
 export 'package:view/features/users/user_details/user_page.dart';

@@ -8,15 +8,17 @@ part 'city_rest.g.dart';
 abstract interface class CityRest {
   factory CityRest(Dio dio, {String baseUrl}) = _CityRest;
 
-  @GET("/web/city")
+  static const String apiRoute = "/web/cities";
+
+  @GET(apiRoute)
   Future<List<CityResponse>> list(@Header("Authorization") String token);
 
-  @GET("/web/city/{id}")
+  @GET("$apiRoute/{id}")
   Future<CityResponse> details(@Header("Authorization") String token, @Path("id") String cityId);
 
-  @POST("/web/city")
+  @POST(apiRoute)
   Future<CityResponse> insert(@Header("Authorization") String token, @Body() Map<String, dynamic> body);
 
-  @DELETE("/web/city/{id}")
+  @DELETE("$apiRoute/{id}")
   Future<void> delete(@Header("Authorization") String token, @Path("id") String cityId);
 }

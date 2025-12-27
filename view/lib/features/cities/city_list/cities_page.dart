@@ -7,14 +7,14 @@ import 'package:view/widget/custom_table_view.dart';
 import 'package:view/widget/page_header/page_header.dart';
 import 'package:view_model/view_model.dart';
 
-class CityPage extends InjectableStateless {
+class CitiesPage extends InjectableStateless {
   CityListStrings get strings => inject();
 
   CitiesViewModel get vm => inject();
 
   final ValueChanged<String> openDetails;
 
-  const CityPage(super.inject, {required this.openDetails, super.key});
+  const CitiesPage(super.inject, {required this.openDetails, super.key});
 
   @override
   Widget build(BuildContext context) {
