@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:model/auth/auth_service.dart';
 import 'package:model/auth/auth_service_impl.dart';
+import 'package:model/cities/city_service.dart';
+import 'package:model/cities/city_service_impl.dart';
 import 'package:model/clients/client_service.dart';
 import 'package:model/clients/client_service_impl.dart';
 import 'package:model/session/session_service.dart';
@@ -14,6 +16,8 @@ import 'package:model/years/year_service.dart';
 import 'package:model/years/year_service_impl.dart';
 
 export 'package:model/auth/auth_service.dart';
+export 'package:model/cities/city_model.dart';
+export 'package:model/cities/city_service.dart';
 export 'package:model/clients/client_model.dart';
 export 'package:model/clients/client_service.dart';
 export 'package:model/session/session_service.dart';
@@ -41,5 +45,6 @@ class Model {
     registerLazySingleton<ClientService>(() => ClientServiceImpl(inject));
     registerLazySingleton<YearService>(() => YearServiceImpl(inject));
     registerLazySingleton<WebSiteService>(() => WebSiteServiceImpl(inject));
+    registerLazySingleton<CityService>(() => CityServiceImpl(inject));
   }
 }
