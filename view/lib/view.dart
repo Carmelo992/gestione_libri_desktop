@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:view/features/cities/city_details/city_details_strings.dart';
+import 'package:view/features/cities/city_details/city_details_strings_impl.dart';
+import 'package:view/features/cities/city_list/city_list_strings.dart';
+import 'package:view/features/cities/city_list/city_list_strings_impl.dart';
 import 'package:view/features/clients/clients_list/clients_list_strings.dart';
 import 'package:view/features/clients/clients_list/clients_list_strings_impl.dart';
 import 'package:view/features/dashboard/dashboard_strings.dart';
@@ -23,6 +27,8 @@ import 'package:view/widget/custom_table/custom_table_strings_impl.dart';
 import 'package:view/widget/page_header/page_header_strings.dart';
 import 'package:view/widget/page_header/page_header_strings_impl.dart';
 
+export 'package:view/features/cities/city_details/city_page.dart';
+export 'package:view/features/cities/city_list/city_list_strings.dart';
 export 'package:view/features/clients/clients_list/clients_page.dart';
 export 'package:view/features/dashboard/dashboard_page.dart';
 export 'package:view/features/users/user_details/user_page.dart';
@@ -55,5 +61,7 @@ class View {
     registerSingletonIfAbsent<YearDetailsStrings>(() => YearDetailsStringsImpl(inject));
     registerSingletonIfAbsent<WebsitesListStrings>(() => WebsitesListStringsImpl(inject));
     registerSingletonIfAbsent<WebsiteDetailsStrings>(() => WebsiteDetailsStringsImpl(inject));
+    registerSingletonIfAbsent<CityListStrings>(() => CityListStringsImpl(inject));
+    registerSingletonIfAbsent<CityDetailsStrings>(() => CityDetailsStringsImpl(inject));
   }
 }

@@ -44,5 +44,14 @@
   "websiteAlreadyAdded": "Il sito {website} esiste già",
   "newWebsite": "Nuovo sito scolastico",
   "createNewWebsite": "Creare nuovo sito scolastico?",
-  "newWebsiteError": "Sì è verificato un errore durante la creazione del nuovo sito {website}"
+  "newWebsiteError": "Sì è verificato un errore durante la creazione del nuovo sito {website}",
+  "cityPageSubtitle": "Lista città",
+  "cityName": "Nome",
+  "cityCode": "Codice",
+  "cityCodeRow": "Codice:",
+  "cityNotFound": "Città [{id}] non trovata",
+  "cityAlreadyAdded": "La città {city} esiste già",
+  "newCity": "Nuova città",
+  "createNewCity": "Creare nuova città?",
+  "newCityError": "Sì è verificato un errore durante la creazione della nuova città {city}"
 }
